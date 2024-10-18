@@ -17,6 +17,8 @@ export default defineConfig({
   srcDir: 'src',
   cleanUrls: true, // VitePress 将从 URL 中删除尾随.html
   lastUpdated: true, // 首次配置不会立即生效，需git提交后爬取时间戳
+  base: '/vitepress-gupblogs/',
+
   themeConfig: {
     // 网站左上角 logo
     logo: "/logo.png",
@@ -32,123 +34,141 @@ export default defineConfig({
     },
 
     // 侧边栏
-    sidebar: {
-      '/notes/': [
-        {
-          text: '笔记导航',
-          items: [
-            {
-              text: '职业探索',
-              collapsed: false,
-              items: [
-                {
-                  text: '项目实践',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/journey/proj/proxy' }],
-                },
-                {
-                  text: '技能提升',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/journey/proj/proxy' }],
-                },
-                {
-                  text: '团队协作',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/journey/proj/proxy' }],
-                },
-                {
-                  text: '功能实现',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/journey/proj/proxy' }],
-                },
-              ],
-            },
+    sidebar: [
+      {
+        text: '职场发展',
+        collapsed: false,
+        items: [
+          {
+            text: '项目经验',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/career/projects/index' },
+            ]
+          },
+          {
+            text: '功能与技术',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/career/skills/index' },
+            ]
+          },
+        ],
+      },
 
-            {
-              text: '技术殿堂',
-              collapsed: false,
-              items: [
-                {
-                  text: 'Java编程',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/tech/java/proxy' }],
-                },
-                {
-                  text: '开源项目',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/tech/opensrc/proxy' }],
-                },
-                {
-                  text: '技术前沿',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/tech/frontier/proxy' }],
-                },
-                {
-                  text: '编程秘籍',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/tech/tips/proxy' }],
-                },
-              ],
-            },
+      {
+        text: '技术探索',
+        collapsed: false,
+        items: [
+          {
+            text: 'Java深潜',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/tech/java/index' },
+            ]
+          },
+          {
+            text: '开源世界',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/tech/oss/index' },
+            ]
+          },
+          {
+            text: '技术资料库',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/tech/docs/index' },
+            ]
+          },
+        ],
+      },
 
-            {
-              text: '生活点滴',
-              collapsed: false,
-              items: [
-                {
-                  text: '旅行游记',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/grow/travel/proxy' }],
-                },
-                {
-                  text: '理财智慧',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/grow/finance/proxy' }],
-                },
-                {
-                  text: '个人成长',
-                  collapsed: true,
-                  items: [{ text: '科学上网', link: '/notes/grow/growth/proxy' }],
-                },
-              ],
-            },
+      {
+        text: '生活随笔',
+        collapsed: false,
+        items: [
+          {
+            text: '旅行印记',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/life/travel/index' },
+            ]
+          },
+          {
+            text: '光影瞬间',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/life/photos/index' },
+            ]
+          },
+          {
+            text: '个人成长',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/life/growth/index' },
+            ]
+          },
+        ],
+      },
 
-            {
-              text: '分享交流',
-              collapsed: false,
-              items: [
-                { text: '实用工具',
-                  collapsed: true,
-                  items: [
-                    { text: '科学上网', link: '/notes/share/tool/proxy' }
-                  ]
-                },
-                { text: '学习资源',
-                  collapsed: true,
-                  items: [
-                    { text: '科学上网', link: '/notes/share/learn/proxy' }
-                  ]
-                },
-                { text: '技术心得',
-                  collapsed: true,  // 导航栏折叠
-                  items: [
-                    { text: '科学上网', link: '/notes/share/insight/proxy' }
-                  ]
-                },
+      {
+        text: '知识共享',
+        collapsed: false,
+        items: [
+          {
+            text: '实用工具箱',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/share/tools/index' },
+            ]
+          },
+          {
+            text: '学习资源集',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/share/learn/index' },
+            ]
+          },
+          {
+            text: '奇趣网络空间',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/share/web/index' },
+            ]
+          },
+        ],
+      },
 
-                { text: '后续整理',
-                  collapsed: true,  // 导航栏折叠
-                  items: [
-                    { text: '科学上网', link: '/notes/share/todo/proxy' }
-                  ]
-                },
-              ],
-            },
+      {
+        text: '待办清单',
+        collapsed: false,
+        items: [
+          {
+            text: '职场任务',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/todo/work/index' },
+            ]
+          },
+          {
+            text: '生活乐事',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/todo/lifeTasks/index' },
+            ]
+          },
+          {
+            text: '自我拓展',
+            collapsed: true,
+            items: [
+              { text: '科学上网', link: '/notes/todo/selfDev/index' },
+            ]
+          },
+        ],
+      },
 
-          ],
-        },
-      ],
-    },
+    ],
 
     socialLinks: [
       {
@@ -177,8 +197,8 @@ export default defineConfig({
 
     // 编辑本页
     editLink: {
-      pattern: 'xx', // 改成自己的仓库
-      text: '在GitHub编辑本页',
+      pattern: 'https://github.com/Cintahy/vitepress-gupblogs/blob/main/docs/src/:path',
+      text: '点击GitHub编辑笔记',
     },
 
     // 上次更新时间

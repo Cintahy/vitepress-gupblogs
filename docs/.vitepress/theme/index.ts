@@ -26,10 +26,12 @@ import googleAnalytics from 'vitepress-plugin-google-analytics'
 // 图片缩放
 import mediumZoom from 'medium-zoom';
 import { onMounted, watch, nextTick } from 'vue';
-import { useRoute } from 'vitepress';
+import { useData, useRoute } from 'vitepress';
 // 看板娘
 import { useLive2d } from 'vitepress-theme-website'
 // import 'virtual:group-icons.css' //代码组样式
+// giscus评论
+import giscusTalk from 'vitepress-plugin-comment-with-giscus';
 
 export default {
   extends: DefaultTheme,
@@ -64,7 +66,9 @@ export default {
   },
 
   setup() {
+    const { frontmatter } = useData();
     const route = useRoute();
+
     const initZoom = () => {
       // mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' }); // 默认
       mediumZoom('.main img', { background: 'var(--vp-c-bg)' }); // 不显式添加{data-zoomable}的情况下为所有图像启用此功能
@@ -97,5 +101,24 @@ export default {
         opacity: 0.8
       }
     })
+
+    // giscus配置
+    giscusTalk({
+          repo: 'Cintahy/vitepress-gupblogs',   // 仓库
+          repoId: 'R_kgDONBHOew',               // 仓库ID
+          category: 'Announcements',            // 讨论分类
+          categoryId: 'DIC_kwDONBHOe84CjaSz',   // 讨论分类ID
+          mapping: 'pathname',
+          inputPosition: 'bottom',
+          lang: 'zh-CN',
+        },
+        {
+          frontmatter, route
+        },
+        //默认值为true，表示已启用，此参数可以忽略；
+        //如果为false，则表示未启用
+        //您可以使用“comment:true”序言在页面上单独启用它
+        true
+    );
   },
 }
